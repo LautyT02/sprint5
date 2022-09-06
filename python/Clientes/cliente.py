@@ -26,8 +26,10 @@ class Cliente(object):
     def habilitarTipoCuenta(self,tipo):
         self.puedeCuenta[tipo]=True
 
-    def habilitarTarjeta(self,tipo):
-        pass
+    def habilitarCuenta(self,numero,tipo):
+        if self.puedeCuenta[tipo]:
+            self.cuentas.append(Cuenta(numero,tipo))
+    
 
     def setLimiteExtraccion(self,limite):
         self.limiteExtraccion=float(limite)
@@ -39,9 +41,9 @@ class Cliente(object):
     def habilitarTipoTarjeta(self,tipo):
         self.puedeTarjeta[tipo]=True
 
-    def habilitarTarjeta(self,tarjeta):
-        #if()
-        pass
+    def habilitarTarjeta(self,numero,tipo):
+        if self.puedeTarjeta[tipo]:
+            self.tarjetas.append(Tarjeta(numero,tipo))
 
     def __str__(self):
         pass
