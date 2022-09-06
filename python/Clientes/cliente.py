@@ -6,11 +6,12 @@ En tipos se hereda de esta clase y se modifican y agregan las caracteristicas ne
 from ..Tarjetas.tarjeta import Tarjeta
 from ..Chequeras.chequera import Chequera 
 from ..Cuentas.cuenta import Cuenta
+from .direccion import Direccion
 #self.chequeras=[] Poner solo en clientes que puedan tener chequera
 class Cliente(object):
     
 
-    def __init__(self,nombre='',apellido='', numero=0, dni=11111111):
+    def __init__(self,nombre='',apellido='', numero=0, dni=11111111,direccion=Direccion()):
         self.nombre=nombre
         self.apellido=apellido
         self.numero=numero
@@ -21,7 +22,9 @@ class Cliente(object):
         self.cuentas=[]
         self.transacciones=[]
         self.limiteExtraccion=0.0
-        self.comisionTransaccion=0.0
+        self.comisionTransaccion=1.0
+        self.tipoCliente=''
+        self.direccion=direccion
     
     def habilitarTipoCuenta(self,tipo):
         self.puedeCuenta[tipo]=True
@@ -46,5 +49,5 @@ class Cliente(object):
             self.tarjetas.append(Tarjeta(numero,tipo))
 
     def __str__(self):
-        pass
+        return "{numero: "+str(self.numero)+",nombre: "+self.nombre+",apellido: "+self.apellido+",DNI: "+str(self.dni)
     
