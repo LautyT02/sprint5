@@ -3,7 +3,9 @@ En esta clase se establecen las caracteristicas de todo cliente.
 En tipos se hereda de esta clase y se modifican y agregan las caracteristicas necesarias.
 """
 #Imports. Hay que arjetas y cuentas
-#from 
+from ..Tarjetas.tarjeta import Tarjeta
+from ..Chequeras.chequera import Chequera 
+from ..Cuentas.tipos import 
 #self.chequeras=[] Poner solo en clientes que puedan tener chequera
 class Cliente(object):
     
