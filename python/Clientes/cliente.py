@@ -5,7 +5,7 @@ En tipos se hereda de esta clase y se modifican y agregan las caracteristicas ne
 #Imports. Hay que arjetas y cuentas
 from ..Tarjetas.tarjeta import Tarjeta
 from ..Chequeras.chequera import Chequera 
-from ..Cuentas.tipos import 
+from ..Cuentas.cuenta import Cuenta
 #self.chequeras=[] Poner solo en clientes que puedan tener chequera
 class Cliente(object):
     
