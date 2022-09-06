@@ -10,7 +10,8 @@ class Cliente(object):
 
     def __init__(self,nombre='',apellido='', numero=0, dni=11111111):
         self.nombre=nombre
-        self.apellido=apellidoTarjeta={'deb': False, 'cred': False}
+        self.apellido=apellido
+        self.puedeTarjeta={'deb': False, 'cred': False}
         self.numero=numero
         self.dni=dni
         self.tarjetas=[]
