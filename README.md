@@ -5,5 +5,5 @@ Entrega individual del sprint 5 de Lautaro Triviño
 <ol>
 <li>pip install requirements.txt</li>
 <li>abrir archivo paginaTransacciones/html/index.html</li>
-<li>ejecutar archivo python/leerJSONsYobtenerRazon.py</li>
+<li>ejecutar comando python3 python/leerJSONsYobtenerRazon.py</li>
 </ol>
