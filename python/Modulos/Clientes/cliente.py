@@ -3,13 +3,12 @@ En esta clase se establecen las caracteristicas de todo cliente.
 En tipos se hereda de esta clase y se modifican y agregan las caracteristicas necesarias.
 """
 #Imports
-from ..Direccion.direccion import Direccion
-from ..Transacciones.transaccion import Transaccion
+from .Transacciones.transaccion import Transaccion
 
 class Cliente(object):
     
 
-    def __init__(self,nombre='',apellido='', numero=0, dni=11111111,direccion=Direccion(),numeroCuenta=190):
+    def __init__(self,nombre:str,apellido:str, numero:int, dni:int,direccion:object,numeroCuenta:int):
         #Datos Personales del cliente
         self.nombre=nombre
         self.apellido=apellido
@@ -45,7 +44,7 @@ class Cliente(object):
         return (self.maxTarjetasCredito)
         
     def puedeComprarDolares(self):
-        return self.cuentaAhorroDolares
+        return self.cajaAhorroDolares
 
     #Setters
     def setDescubierto(self,descubierto):
@@ -62,7 +61,7 @@ class Cliente(object):
 
     #Método Transacciones
     def agregarTransaccion(self,data):
-        self.transacciones[data["numero"]]=Transaccion(self,data)
+        self.transacciones.append(Transaccion(self,data))
 
     #Métodos str
     def __str__(self):
@@ -71,7 +70,7 @@ class Cliente(object):
         _str+=str(self.direccion) + ", \n"
         _str+=self.strTransacciones() + "\n "
         _str+="}"
-        return 
+        return _str
 
     def strDatosCliente(self):
         strDatosCliente='"numero": ' + str(self.numero) + ", \n"

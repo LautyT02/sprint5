@@ -1,8 +1,7 @@
-from .cliente import Cliente
-from ..Direccion.direccion import Direccion
+from .Clientes.cliente import Cliente
 
 class Classic(Cliente):
-    def __init__(self, nombre='', apellido='', numero=0, dni=11111111, direccion=Direccion(), numeroCuenta=1):
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: object, numeroCuenta: int):
         #Datos Personales del Cliente y numeroCuenta
         super().__init__(nombre, apellido, numero, dni, direccion, numeroCuenta)
         #Cuentas
@@ -15,9 +14,9 @@ class Classic(Cliente):
         self.setLimiteTransferenciaRecivida(150000)
         #Tipo de Cleinte
         self.tipoCliente='CLASSIC'
-
+        
 class Gold(Cliente):
-    def __init__(self, nombre='', apellido='', numero=0, dni=11111111, direccion=Direccion(), numeroCuenta=1):
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: object, numeroCuenta: int):
         #Datos Personales del Cliente y numeroCuenta
         super().__init__(nombre, apellido, numero, dni, direccion, numeroCuenta)
         #Cuentas
@@ -37,7 +36,7 @@ class Gold(Cliente):
         self.tipoCliente='GOLD'    
 
 class Black(Cliente):
-    def __init__(self, nombre='', apellido='', numero=0, dni=11111111, direccion=Direccion(), numeroCuenta=1):
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: object, numeroCuenta: int):
         #Datos Personales del Cliente y numeroCuenta
         super().__init__(nombre, apellido, numero, dni, direccion, numeroCuenta)
         #Cuentas
@@ -55,3 +54,5 @@ class Black(Cliente):
         self.setLimiteTransferenciaRecivida(-1)#Para indicar que no hay
         #Tipo de Cleinte
         self.tipoCliente='BLACK'
+
+        
