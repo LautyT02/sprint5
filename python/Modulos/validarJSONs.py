@@ -110,7 +110,7 @@ esquema={
     ]
 }
 def validarJSON(nombreArchivo):
-    ruta = '../salidaTPS/eventos_'+nombreArchivo+'.json'
+    ruta = 'salidaTPS/eventos_'+nombreArchivo+'.json'
     with open(ruta,'r') as archivo:
             try:
                 objeto = json.load(archivo)

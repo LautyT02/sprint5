@@ -7,7 +7,6 @@ from Modulos.escribirHTML import escribirHTML
 
 #Obtención Archivo
 nombreArchivo=input('Ingrese el nombre del json a analizar: gold, classic, black: ')
-print(nombreArchivo)
 data=validarJSON(nombreArchivo)
 #Creación Objeto Dirección
 dir_dic=data["direccion"]
@@ -20,5 +19,4 @@ for transaccion in data["transacciones"]:
     cliente.agregarTransaccion(transaccion)
 strCliente=str(cliente)
 transaccionesJSON= json.loads(strCliente)
-print(transaccionesJSON)
 escribirHTML(transaccionesJSON)

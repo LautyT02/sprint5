@@ -2,7 +2,7 @@ from cgitb import html
 
 
 def escribirHTML(data:dict):
-    htmlFile=open(f'../paginaTransacciones/html/index.html','w')
+    htmlFile=open(f'paginaTransacciones/html/index.html','w')
     contenido=f"""
     <!DOCTYPE html>
     <html lang="en">
