@@ -24,7 +24,7 @@
 			"totalChequerasActualmente" : 1
 		},
 		{
-			"estado": "RECHAZADA",
+			"estado": "ACEPTADA",
 			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
 			"cuentaNumero": 190,
 			"cupoDiarioRestante": 15000,
@@ -96,7 +96,7 @@
 			"totalChequerasActualmente" : 1
 		},
 		{
-			"estado": "RECHAZADA",
+			"estado": "ACEPTADA",
 			"tipo": "TRANSFERENCIA_ENVIADA",
 			"cuentaNumero": 190,
 			"cupoDiarioRestante": 3000,

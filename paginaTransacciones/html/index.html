@@ -1,12 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <title>ImprimirJSON</title>
+    </head>
+    <body>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Datos del Cliente</th>
+                <th scope="col">Número</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Tipo de Cliente</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td>100001</td>
+                <td>Nicolas</td>
+                <td>Gaston</td>
+                <td>29494777</td>
+                <td>GOLD</td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+                <th scope="col">Dirección</th>
+                <th scope="col">Calle</th>
+                <th scope="col">Número</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Provincia</th>
+                <th scope="col">Pais</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td>Rivadavia</td>
+                <td>7900</td>
+                <td>Capital Federal</td>
+                <td>Buenos Aires</td>
+                <td>Argentina</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Transacciones</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">N° Cuenta</th>
+                    <th scope="col">Cupo Diario</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Saldo Cuenta</th>
+                    <th scope="col">Cant. Tarjetas Crédito</th>
+                    <th scope="col">Cant. Chequeras</th>
+                    <th scope="col">Razón Rechazo</th>
+                </tr>
+                </thead>
+                <tbody>
+           
+                <tr>
+                    <th scope="row">1</th>
+                    <td>ACEPTADA</td>
+                    <td>RETIRO_EFECTIVO_CAJERO_AUTOMATICO</td>
+                    <td>190</td>
+                    <td>9000</td>
+                    <td>1000</td>
+                    <td>10/06/2022 16:00:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>No Aplica</td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">2</th>
+                    <td>RECHAZADA</td>
+                    <td>RETIRO_EFECTIVO_CAJERO_AUTOMATICO</td>
+                    <td>190</td>
+                    <td>15000</td>
+                    <td>11000</td>
+                    <td>10/06/2022 16:40:55</td>
+                    <td>10000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>No se encontró el motivo</td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">3</th>
+                    <td>RECHAZADA</td>
+                    <td>RETIRO_EFECTIVO_CAJERO_AUTOMATICO</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>9000</td>
+                    <td>10/06/2022 16:55:45</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>La operación exedería el cupo diario permitido. </td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">4</th>
+                    <td>RECHAZADA</td>
+                    <td>RETIRO_EFECTIVO_CAJERO_AUTOMATICO</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>9000</td>
+                    <td>10/06/2022 16:56:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>La operación exedería el cupo diario permitido. </td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">5</th>
+                    <td>RECHAZADA</td>
+                    <td>ALTA_TARJETA_CREDITO</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>9000</td>
+                    <td>11/06/2022 16:00:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Alcanzó el límite de tarjetas de crédito permitido.</td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">6</th>
+                    <td>RECHAZADA</td>
+                    <td>ALTA_CHEQUERA</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>9000</td>
+                    <td>12/06/2022 16:00:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Alcanzó el límite de Chequeras permitido.</td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">7</th>
+                    <td>RECHAZADA</td>
+                    <td>COMPRA_DOLAR</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>9000</td>
+                    <td>13/06/2022 10:00:00</td>
+                    <td>1000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>No posee Caja de Ahorro en Dolares. </td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">8</th>
+                    <td>RECHAZADA</td>
+                    <td>TRANSFERENCIA_ENVIADA</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>100000</td>
+                    <td>14/06/2022 16:00:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>No se encontró el motivo</td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">9</th>
+                    <td>ACEPTADA</td>
+                    <td>TRANSFERENCIA_RECIBIDA</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>9000</td>
+                    <td>20/06/2022 16:00:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>No Aplica</td>
+                </tr>
+                   
+                <tr>
+                    <th scope="row">10</th>
+                    <td>RECHAZADA</td>
+                    <td>TRANSFERENCIA_RECIBIDA</td>
+                    <td>190</td>
+                    <td>3000</td>
+                    <td>600000</td>
+                    <td>21/06/2022 16:00:55</td>
+                    <td>100000</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>El monto supera el límite establecido.</td>
+                </tr>
+                
+            </tbody>            
+        </table>
+    </body>
+    </html>
