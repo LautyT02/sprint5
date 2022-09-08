@@ -21,7 +21,8 @@ class Gold(Cliente):
         self.cuentas.append(Cuenta(numeroCuenta,'CAD'))
         self.tarjetas.append(Tarjeta(numeroTarjeta,'deb'))
         self.tipoCliente='GOLD'
-        self.chequeras=[]
+        self.cantChequeras=2
+        
 
     def agregarChequera(self,chequera=Chequera()):
         if (len(self.chequeras)<2):

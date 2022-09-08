@@ -12,4 +12,5 @@ class Classic(Cliente):
         self.cuentas.append(Cuenta(numeroCuenta,'CAP'))
         self.tarjetas.append(Tarjeta(numeroTarjeta,'deb'))
         self.tipoCliente='CLASSIC'
+        self.limiteExtraccion=150000.0
     

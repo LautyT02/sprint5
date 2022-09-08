@@ -1,3 +1,4 @@
+from typing_extensions import Self
 from ..cliente import Cliente
 from python.Cuentas.cuenta import Cuenta
 from python.Tarjetas.tarjeta import Tarjeta
@@ -20,7 +21,8 @@ class Gold(Cliente):
         self.cuentas.append(Cuenta(numeroCuenta,'CAD'))
         self.tarjetas.append(Tarjeta(numeroTarjeta,'deb'))
         self.tipoCliente='GOLD'
-        self.chequera=Chequera()
+        self.cantChequeras=1
+    
 
     def habilitarChequera(self):
         pass
