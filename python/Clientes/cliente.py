@@ -2,78 +2,91 @@
 En esta clase se establecen las caracteristicas de todo cliente.
 En tipos se hereda de esta clase y se modifican y agregan las caracteristicas necesarias.
 """
-#Imports. Hay que arjetas y cuentas
-from array import array
-from ..Tarjetas.tarjeta import Tarjeta
-from ..Chequeras.chequera import Chequera 
-from ..Cuentas.cuenta import Cuenta
-from .direccion import Direccion
-#from ..Transacciones.transaccion import Transaccion
-# Poner solo en clientes que puedan tener chequera
-transaccionTipo={
-			"estado": "ACEPTADA",
-			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
-			"cuentaNumero": 190,
-			"cupoDiarioRestante": 9000,
-			"monto": 1000,
-			"fecha": "06/06/2022 10:00:55",
-			"numero": 1,
-			"saldoEnCuenta": 100000,
-			"totalTarjetasDeCreditoActualmente" : 5,
-			"totalChequerasActualmente" : 2
-		}
+#Imports
+from ..Direccion.direccion import Direccion
+from ..Transacciones.transaccion import Transaccion
+
 class Cliente(object):
     
 
-    def __init__(self,nombre='',apellido='', numero=0, dni=11111111,direccion=Direccion()):
+    def __init__(self,nombre='',apellido='', numero=0, dni=11111111,direccion=Direccion(),numeroCuenta=190):
+        #Datos Personales del cliente
         self.nombre=nombre
         self.apellido=apellido
         self.numero=numero
         self.dni=dni
-        self.puedeTarjeta={'deb': False, 'cred': False}
+        self.direccion=direccion
+        #Cuentas
+        self.numeroCuenta=numeroCuenta
+        self.cajaAhorroPesos=False
+        self.cajaAhorroDolares=False
+        self.cuentaCorriente=False
+        self.descurbierto=0
+        #Tarjetas
+        self.cantTarjetasDebito=0
+        self.maxTarjetasCredito=0
         self.cantTarjetasCredito=0
-        self.tarjetas=[]
-        self.puedeCuenta={'CAP': False, 'CAD': False, 'CC': False}
-        self.cuentas=[]
+        #Chequeras
+        self.maxChequeras=0
+        self.cantChequeras=0
+        #Transacciones
         self.transacciones=[]
         self.limiteExtraccion=0.0
         self.comisionTransaccion=1.0
         self.limTransfRecivda=0
-        self.tipoCliente=''
-        self.direccion=direccion
-        self.cantChequeras=0
-        self.chequeras=[]
+        #Tipo de Cleinte
+        self.tipoCliente=''        
     
-    def habilitarTipoCuenta(self,tipo):
-        self.puedeCuenta[tipo]=True
+    #Métodos puedeX
+    def puedeCrearChequera(self):
+        #return (self.maxChequeras>0)
+        return (self.cantChequeras<self.maxChequeras)
 
-    def habilitarCuenta(self,numero,tipo):
-        if self.puedeCuenta[tipo]:
-            self.cuentas.append(Cuenta(numero,tipo))
-    
+    def puedeCrearTarjetaCredito(self):
+        #return (self.maxTarjetasCredito)
+        return (self.cantTarjetasCredito<self.maxTarjetasCredito)
+
+    def puedeComprarDolares(self):
+        return self.cuentaAhorroDolares
+
+    #Setters
+    def setDescubierto(self,descubierto):
+        self.descurbierto=descubierto
 
     def setLimiteExtraccion(self,limite):
         self.limiteExtraccion=float(limite)
     
-    def setComisionTransaccion(self,comision):
+    def setComisionTransferencia(self,comision):
         self.comisionTransaccion=float(comision)
 
+    def setLimiteTransferenciaRecivida(self,limiteTransefrencia):
+        self.limTransfRecivda=float(limiteTransefrencia)
 
-    def habilitarTipoTarjeta(self,tipo):
-        self.puedeTarjeta[tipo]=True
-
-    def habilitarTarjeta(self,numero,tipo):
-        if self.puedeTarjeta[tipo]:
-            self.tarjetas.append(Tarjeta(numero,tipo))
-
+    #Método Transacciones
     def agregarTransaccion(self,data):
-        pass
-        #self.transacciones[data["numero"]]=
+        self.transacciones[data["numero"]]=Transaccion(self,data)
 
-    def validarTransaccion(self,data):
-        pass
-
+    #Métodos str
     def __str__(self):
-        return "{numero: "+str(self.numero)+",nombre: "+self.nombre+",apellido: "+self.apellido+",DNI: "+str(self.dni)
-    
+        _str="{ \n"
+        _str+=self.strDatosCliente() + ", \n"
+        _str+=str(self.direccion) + ", \n"
+        _str+=self.strTransacciones() + "\n "
+        _str+="}"
+        return 
+
+    def strDatosCliente(self):
+        strDatosCliente='"numero": ' + str(self.numero) + ", \n"
+        strDatosCliente+='"nombre": ' + self.nombre + ", \n"
+        strDatosCliente+='"apellido": ' + self.apellido + ", \n"
+        strDatosCliente+='"DNI": ' + str(self.dni) + ", \n"
+        strDatosCliente+='"tipo". ' + self.tipoCliente + ", \n"
+        return strDatosCliente
+
+    def strTransacciones(self):
+        stringTransacciones='"transacciones": [ \n'
+        for i in range(len(self.transacciones)):
+            stringTransacciones+=str(self.transacciones[i])+", \n"
+        stringTransacciones+="]"
+        return stringTransacciones
 

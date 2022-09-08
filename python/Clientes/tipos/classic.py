@@ -1,16 +1,17 @@
-from python.Cuentas.cuenta import Cuenta
-from python.Tarjetas.tarjeta import Tarjeta
 from ..cliente import Cliente
+from ...Direccion.direccion import Direccion
 
 class Classic(Cliente):
-    def __init__(self, nombre='', apellido='', numero=0, dni=11111111,numeroCuenta=1,numeroTarjeta=2):
-        super().__init__(nombre, apellido, numero, dni)
-        self.habilitarTipoTarjeta('deb')
-        self.habilitarTipoCuenta('CAP')
-        self.comisionTransaccion=0.01
-        self.limiteExtraccion=10000
-        self.cuentas.append(Cuenta(numeroCuenta,'CAP'))
-        self.tarjetas.append(Tarjeta(numeroTarjeta,'deb'))
+    def __init__(self, nombre='', apellido='', numero=0, dni=11111111, direccion=Direccion(), numeroCuenta=1):
+        #Datos Personales del Cliente y numeroCuenta
+        super().__init__(nombre, apellido, numero, dni, direccion, numeroCuenta)
+        #Cuentas
+        self.cuentaAhorroPesos=True
+        #Tarjetas
+        self.cantTarjetasDebito=1
+        #Transacciones
+        self.setLimiteExtraccion(10000)
+        self.setComisionTransferencia(0.01)
+        self.setLimiteTransferenciaRecivida(150000)
+        #Tipo de Cleinte
         self.tipoCliente='CLASSIC'
-        self.limiteExtraccion=150000.0
-    

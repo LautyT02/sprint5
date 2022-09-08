@@ -1,29 +1,22 @@
 from ..cliente import Cliente
-from ..cliente import Cliente
-from python.Cuentas.cuenta import Cuenta
-from python.Tarjetas.tarjeta import Tarjeta
-from python.Chequeras.chequera import Chequera
+from ...Direccion.direccion import Direccion
 
 class Gold(Cliente):
-    def __init__(self, nombre='', apellido='', numero=0, dni=11111111,numeroCuenta=1,numeroTarjeta=2):
-        super().__init__(nombre, apellido, numero, dni)
-        self.habilitarTipoTarjeta('deb')
-        self.habilitarTipoTarjeta('cred')
-        self.habilitarTipoCuenta('CAP')
-        self.habilitarTipoCuenta('CC')
-        self.habilitarTipoCuenta('CAD')
-        self.comisionTransaccion=0.0
-        self.limiteExtraccion=100000
-        self.cantTarjetasCredito=5
-        self.descurbierto=10000
-        self.cuentas.append(Cuenta(numeroCuenta,'CAP'))
-        self.cuentas.append(Cuenta(numeroCuenta,'CC'))
-        self.cuentas.append(Cuenta(numeroCuenta,'CAD'))
-        self.tarjetas.append(Tarjeta(numeroTarjeta,'deb'))
-        self.tipoCliente='GOLD'
-        self.cantChequeras=2
-        
-
-    def agregarChequera(self,chequera=Chequera()):
-        if (len(self.chequeras)<2):
-            self.chequeras.append(chequera)
+    def __init__(self, nombre='', apellido='', numero=0, dni=11111111, direccion=Direccion(), numeroCuenta=1):
+        #Datos Personales del Cliente y numeroCuenta
+        super().__init__(nombre, apellido, numero, dni, direccion, numeroCuenta)
+        #Cuentas
+        self.cajaAhorroPesos=True
+        self.cajaAhorroDolares=True
+        self.cuentaCorriente=True
+        self.setDescubierto(10000)
+        #Tarjetas
+        self.maxTarjetasCredito=5
+        #Chequeras
+        self.maxChequeras=2
+        #Transacciones
+        self.setLimiteExtraccion(100000)
+        self.setComisionTransferencia(0.0)
+        self.setLimiteTransferenciaRecivida(-1)#Para indicar que no hay
+        #Tipo de Cleinte
+        self.tipoCliente='BLACK'

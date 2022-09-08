@@ -1,28 +1,22 @@
-from typing_extensions import Self
 from ..cliente import Cliente
-from python.Cuentas.cuenta import Cuenta
-from python.Tarjetas.tarjeta import Tarjeta
-from python.Chequeras.chequera import Chequera
+from ...Direccion.direccion import Direccion
 
 class Gold(Cliente):
-    def __init__(self, nombre='', apellido='', numero=0, dni=11111111,numeroCuenta=1,numeroTarjeta=2):
-        super().__init__(nombre, apellido, numero, dni)
-        self.habilitarTipoTarjeta('deb')
-        self.habilitarTipoTarjeta('cred')
-        self.habilitarTipoCuenta('CAP')
-        self.habilitarTipoCuenta('CC')
-        self.habilitarTipoCuenta('CAD')
-        self.comisionTransaccion=0.01
-        self.limiteExtraccion=20000
-        self.cantTarjetasCredito=1
-        self.descurbierto=10000
-        self.cuentas.append(Cuenta(numeroCuenta,'CAP'))
-        self.cuentas.append(Cuenta(numeroCuenta,'CC'))
-        self.cuentas.append(Cuenta(numeroCuenta,'CAD'))
-        self.tarjetas.append(Tarjeta(numeroTarjeta,'deb'))
-        self.tipoCliente='GOLD'
-        self.cantChequeras=1
-    
-
-    def habilitarChequera(self):
-        pass
+    def __init__(self, nombre='', apellido='', numero=0, dni=11111111, direccion=Direccion(), numeroCuenta=1):
+        #Datos Personales del Cliente y numeroCuenta
+        super().__init__(nombre, apellido, numero, dni, direccion, numeroCuenta)
+        #Cuentas
+        self.cuentaAhorroDolares=True
+        self.cuentaCorriente=True
+        self.setDescubierto(10000)
+        #Tarjetas
+        self.cantTarjetasDebito=1
+        self.maxTarjetasCredito=1
+        #Chequeras
+        self.maxChequeras=1
+        #Transacciones
+        self.setLimiteExtraccion(20000)
+        self.setComisionTransferencia(0.005)
+        self.setLimiteTransferenciaRecivida(500000)
+        #Tipo de Cleinte
+        self.tipoCliente='GOLD'    
