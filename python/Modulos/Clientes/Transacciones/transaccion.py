@@ -1,20 +1,7 @@
-from ..Clientes.cliente import Cliente
-transaccionTipo={
-			"estado": "ACEPTADA",
-			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
-			"cuentaNumero": 190,
-			"cupoDiarioRestante": 9000,
-			"monto": 1000,
-			"fecha": "06/06/2022 10:00:55",
-			"numero": 1,
-			"saldoEnCuenta": 100000,
-			"totalTarjetasDeCreditoActualmente" : 5,
-			"totalChequerasActualmente" : 2
-		}
-
-
+from ast import match_case
 class Transaccion(object):
-    def __init__(self,cliente=Cliente(),transaccionDICC=transaccionTipo) -> None:
+    
+    def __init__(self,cliente:object,transaccionDICC:dict) -> None:
         self.cliente=cliente
         self.estado=transaccionDICC["estado"]
         self.tipo=transaccionDICC["tipo"]
@@ -27,27 +14,35 @@ class Transaccion(object):
         self.tarjCerdAct=transaccionDICC["totalTarjetasDeCreditoActualmente"]
         self.cheqAct=transaccionDICC["totalChequerasActualmente"]
         self.razon=""
-        self.validaciones={
-            "RETIRO_EFECTIVO_CAJERO_AUTOMATICO": self.razonRetiroCajero(),"ALTA_TARJETA_CREDITO": self.razonAltaTarjetaCredito(),
-            "ALTA_CHEQUERA": self.razonAltaChequera(),"COMPRA_DOLAR": self.razonCompraDolares(),
-            "TRANSFERENCIA_ENVIADA": self.razonTransferenciaEnviada(),"TRANSFERENCIA_RECIBIDA": self.razonTransferenciaRecibida()
-            }
         if(self.estado=="RECHAZADA"):
             self.razonTrasaccion()
         
+        
     def razonTrasaccion(self):
-        self.validaciones[self.tipo]
+        match self.tipo:
+            case "RETIRO_EFECTIVO_CAJERO_AUTOMATICO":
+                self.razonRetiroCajero()
+            case "ALTA_TARJETA_CREDITO":
+                self.razonAltaTarjetaCredito()
+            case "ALTA_CHEQUERA":
+                self.razonAltaChequera()
+            case "COMPRA_DOLAR": 
+                self.razonCompraDolares()
+            case "TRANSFERENCIA_ENVIADA":
+                self.razonTransferenciaEnviada()
+            case "TRANSFERENCIA_RECIBIDA":
+                 self.razonTransferenciaRecibida()
         if(self.razon==""):
-            self.razon="No se encontró el motivo del rechazo"
+            self.razon="No se encontró el motivo del rechazo"        
 
     def razonRetiroCajero(self):
         if(self.cupoDiarioRestante<self.monto):
             self.razon+="La transacción exedería el límite de extraccion diario." 
-        if(self.saldoEnCuenta<self.monto):
+        if(self.saldoEnCuenta-self.monto)>-self.cliente.descubierto:
             self.razon="No posee el saldo suficiente para realizar la extracción."
 
     def razonTransferenciaEnviada(self):
-        if(self.saldoEnCuenta<self.monto):
+        if(self.saldoEnCuenta-self.monto)>-self.cliente.descubierto:
             self.razon="No posee el saldo suficiente para realizar la transeferencia."
 
     def razonTransferenciaRecibida(self):
@@ -84,5 +79,5 @@ class Transaccion(object):
         diccionario+='"totalTarjetasDeCreditoActualmente": ' + str(self.tarjCerdAct) + ", \n"
         diccionario+='"totalChequerasActualmente": ' + str(self.cheqAct) + ", \n"
         diccionario+='"razon": ' + self.razon + "\n"
-        diccionario+=+'}'
+        diccionario+='}'
         return  diccionario
