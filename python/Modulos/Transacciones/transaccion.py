@@ -1,4 +1,4 @@
-from python.Clientes.cliente import Cliente
+from ..Clientes.cliente import Cliente
 transaccionTipo={
 			"estado": "ACEPTADA",
 			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
