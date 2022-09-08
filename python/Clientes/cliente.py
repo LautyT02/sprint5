@@ -39,13 +39,11 @@ class Cliente(object):
     
     #Métodos puedeX
     def puedeCrearChequera(self):
-        #return (self.maxChequeras>0)
-        return (self.cantChequeras<self.maxChequeras)
+        return (self.maxChequeras>0)
 
     def puedeCrearTarjetaCredito(self):
-        #return (self.maxTarjetasCredito)
-        return (self.cantTarjetasCredito<self.maxTarjetasCredito)
-
+        return (self.maxTarjetasCredito)
+        
     def puedeComprarDolares(self):
         return self.cuentaAhorroDolares
 
