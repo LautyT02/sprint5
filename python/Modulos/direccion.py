@@ -7,7 +7,7 @@ class Direccion(object):
         self.pais=pais
 
     def __str__(self) -> str:
-        _str="\t"+'"direcccion": { \n'
+        _str="\t"+'"direccion": { \n'
         _str+="\t \t"+'"calle": "' + self.calle + '", \n'
         _str+="\t \t"+'"numero": "' + str(self.numero) + '", \n'
         _str+="\t \t"+'"ciudad": "' + self.ciudad + '", \n'

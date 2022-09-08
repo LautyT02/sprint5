@@ -76,16 +76,18 @@ class Cliente(object):
         strDatosCliente="\t"+'"numero": ' + str(self.numero) + ", \n"
         strDatosCliente+="\t"+'"nombre": "' + self.nombre + '", \n'
         strDatosCliente+="\t"+'"apellido": "' + self.apellido + '", \n'
-        strDatosCliente+="\t"+'"DNI": "' + str(self.dni) + '", \n'
+        strDatosCliente+="\t"+'"dni": "' + str(self.dni) + '", \n'
         strDatosCliente+="\t"+'"tipo": "' + self.tipoCliente + '", \n'
         return strDatosCliente
     
     def strTransacciones(self):
         stringTransacciones='\t"transacciones": ['
         for i in range(len(self.transacciones)):
-            stringTransacciones+=str(self.transacciones[i])+", \n\t"
+            stringTransacciones+=str(self.transacciones[i])
             if i<(len(self.transacciones)-1):
-                stringTransacciones+="\t"
+                stringTransacciones+=", \n\t\t"
+            else:
+                stringTransacciones+="\n\t"
         stringTransacciones+="]"
         return stringTransacciones
 

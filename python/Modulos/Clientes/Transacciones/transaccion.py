@@ -35,17 +35,15 @@ class Transaccion(object):
             case "TRANSFERENCIA_RECIBIDA":
                  self.razonTransferenciaRecibida()
         if(self.razon==""):
-            self.razon="No se encontró el motivo del rechazo"        
+            self.razon="No se encontró el motivo"        
 
     def razonRetiroCajero(self):
-        if(self.cupoDiarioRestante<self.monto):
-            self.razon+="La transacción exedería el límite de extraccion diario." 
-        if(self.saldoEnCuenta-self.monto)>-self.cliente.descubierto:
-            self.razon="No posee el saldo suficiente para realizar la extracción."
+        self.cupoDiario()
+        self.montoMayorQueSaldo()
 
     def razonTransferenciaEnviada(self):
-        if(self.saldoEnCuenta-self.monto)>-self.cliente.descubierto:
-            self.razon="No posee el saldo suficiente para realizar la transeferencia."
+        if(self.saldoEnCuenta-(self.monto+self.monto*self.cliente.comisionTransaccion))<-self.cliente.descubierto:
+            self.razon+="No posee el saldo suficiente. "
 
     def razonTransferenciaRecibida(self):
         if(self.cliente.limTransfRecivda!=-1):
@@ -53,20 +51,34 @@ class Transaccion(object):
                 self.razon="El monto supera el límite establecido."
 
     def razonAltaTarjetaCredito(self):
-        if(self.cliente.cantTarjetasCredito<=self.tarjCerdAct):
-            self.razon="Alcanzó el límite de tarjetas de crédito permitido."
         if not self.cliente.puedeCrearTarjetaCredito():
             self.razon="No puede tener Tarjeta de Credito"
+        elif(self.cliente.cantTarjetasCredito<=self.tarjCerdAct):
+            self.razon="Alcanzó el límite de tarjetas de crédito permitido."
+        
 
     def razonAltaChequera(self):
-        if(self.cliente.cantChequeras<=self.cheqAct):
-            self.razon="Alcanzó el límite de Chequeras permitido."
         if not self.cliente.puedeCrearChequera():
             self.razon="No puede tener Chequera"
+        elif(self.cliente.cantChequeras<=self.cheqAct):
+            self.razon="Alcanzó el límite de Chequeras permitido."
 
     def razonCompraDolares(self):
         if not self.cliente.puedeComprarDolares():
-            self.razon="No posee Caja de Ahorro en Dolares."
+            self.razon="No posee Caja de Ahorro en Dolares. "
+        else:
+            self.cupoDiario()
+            self.montoMayorQueSaldo()
+            
+
+    def cupoDiario(self):
+        if (self.monto>self.cupoDiarioRestante):
+            self.razon+="La operación exedería el cupo diario permitido. " 
+    
+    def montoMayorQueSaldo(self):
+        if(self.saldoEnCuenta-self.monto)<-self.cliente.descubierto:
+            self.razon+="No posee el saldo suficiente. "
+
         
     def __str__(self) -> str:
         diccionario='{ \n'
