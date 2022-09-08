@@ -20,7 +20,7 @@ class Cliente(object):
         self.cajaAhorroPesos=False
         self.cajaAhorroDolares=False
         self.cuentaCorriente=False
-        self.descurbierto=0
+        self.descubierto=0
         #Tarjetas
         self.cantTarjetasDebito=0
         self.maxTarjetasCredito=0
@@ -48,7 +48,7 @@ class Cliente(object):
 
     #Setters
     def setDescubierto(self,descubierto):
-        self.descurbierto=descubierto
+        self.descubierto=descubierto
 
     def setLimiteExtraccion(self,limite):
         self.limiteExtraccion=float(limite)
@@ -66,24 +66,26 @@ class Cliente(object):
     #Métodos str
     def __str__(self):
         _str="{ \n"
-        _str+=self.strDatosCliente() + ", \n"
+        _str+=self.strDatosCliente()
         _str+=str(self.direccion) + ", \n"
         _str+=self.strTransacciones() + "\n "
         _str+="}"
         return _str
 
     def strDatosCliente(self):
-        strDatosCliente='"numero": ' + str(self.numero) + ", \n"
-        strDatosCliente+='"nombre": ' + self.nombre + ", \n"
-        strDatosCliente+='"apellido": ' + self.apellido + ", \n"
-        strDatosCliente+='"DNI": ' + str(self.dni) + ", \n"
-        strDatosCliente+='"tipo". ' + self.tipoCliente + ", \n"
+        strDatosCliente="\t"+'"numero": ' + str(self.numero) + ", \n"
+        strDatosCliente+="\t"+'"nombre": "' + self.nombre + '", \n'
+        strDatosCliente+="\t"+'"apellido": "' + self.apellido + '", \n'
+        strDatosCliente+="\t"+'"DNI": "' + str(self.dni) + '", \n'
+        strDatosCliente+="\t"+'"tipo": "' + self.tipoCliente + '", \n'
         return strDatosCliente
-
+    
     def strTransacciones(self):
-        stringTransacciones='"transacciones": [ \n'
+        stringTransacciones='\t"transacciones": ['
         for i in range(len(self.transacciones)):
-            stringTransacciones+=str(self.transacciones[i])+", \n"
+            stringTransacciones+=str(self.transacciones[i])+", \n\t"
+            if i<(len(self.transacciones)-1):
+                stringTransacciones+="\t"
         stringTransacciones+="]"
         return stringTransacciones
 

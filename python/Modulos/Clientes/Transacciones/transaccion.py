@@ -16,6 +16,8 @@ class Transaccion(object):
         self.razon=""
         if(self.estado=="RECHAZADA"):
             self.razonTrasaccion()
+        else:
+            self.razon="No Aplica"
         
         
     def razonTrasaccion(self):
@@ -68,16 +70,16 @@ class Transaccion(object):
         
     def __str__(self) -> str:
         diccionario='{ \n'
-        diccionario+='"estado": ' + self.estado + ", \n"
-        diccionario+='"tipo": ' + self.tipo + ", \n"
-        diccionario+='"cuentaNumero": ' + str(self.numeroCuenta) + ", \n"
-        diccionario+='"cupoDiarioRestante": ' + str(self.cupoDiarioRestante)  + ", \n"
-        diccionario+='"monto": ' + str(self.monto) + ", \n"
-        diccionario+='"fecha": ' + self.fecha + ", \n"
-        diccionario+='"numero": ' + str(self.numero) + ", \n"
-        diccionario+='"saldoEnCuenta": ' + str(self.saldoEnCuenta) + ", \n"
-        diccionario+='"totalTarjetasDeCreditoActualmente": ' + str(self.tarjCerdAct) + ", \n"
-        diccionario+='"totalChequerasActualmente": ' + str(self.cheqAct) + ", \n"
-        diccionario+='"razon": ' + self.razon + "\n"
-        diccionario+='}'
+        diccionario+='\t\t\t"estado": "' + self.estado + '", \n'
+        diccionario+='\t\t\t"tipo": "' + self.tipo + '", \n'
+        diccionario+='\t\t\t"cuentaNumero": ' + str(self.numeroCuenta) + ', \n'
+        diccionario+='\t\t\t"cupoDiarioRestante": ' + str(self.cupoDiarioRestante)  + ', \n'
+        diccionario+='\t\t\t"monto": ' + str(self.monto) + ', \n'
+        diccionario+='\t\t\t"fecha": "' + self.fecha + '", \n'
+        diccionario+='\t\t\t"numero": ' + str(self.numero) + ', \n'
+        diccionario+='\t\t\t"saldoEnCuenta": ' + str(self.saldoEnCuenta) + ', \n'
+        diccionario+='\t\t\t"totalTarjetasDeCreditoActualmente": ' + str(self.tarjCerdAct) + ', \n'
+        diccionario+='\t\t\t"totalChequerasActualmente": ' + str(self.cheqAct) + ', \n'
+        diccionario+='\t\t\t"razon": "' + self.razon + '"\n'
+        diccionario+='\t\t}'
         return  diccionario
